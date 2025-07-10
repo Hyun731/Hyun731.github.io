@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OVERDRIVE</title>
+    <link rel="stylesheet" href="name.css">
+</head>
+
+<body>
+    <h2>플레이어 이름을 입력하세요</h2>
+    <input type="text" id="p1" placeholder="플레이어 1 이름">
+    <input type="text" id="p2" placeholder="플레이어 2 이름">
+    <button onclick="startGame()">게임 시작</button>
+
+    <script>
+        function startGame() {
+            const name1 = document.getElementById("p1").value || "플레이어 1";
+            const name2 = document.getElementById("p2").value || "플레이어 2";
+            localStorage.setItem("player1", name1);
+            localStorage.setItem("player2", name2);
+            location.href = "game.html";
+        }
+    </script>
+</body>
+
+</html>

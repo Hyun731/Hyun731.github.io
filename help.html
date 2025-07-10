@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OVERDRIVE</title>
+    <link rel="stylesheet" href="help.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div>
+                <div class="tab active" onclick="showTab('rules')">기본 룰</div>
+                <div class="tab" onclick="showTab('augments')">증강</div>
+            </div>
+            <div class="tab" onclick="location.href='index.html'">메인 화면</div>
+        </div>
+
+        <div class="content">
+            <div id="rules-tab">
+                <div class="title">기본 룰</div>
+                <div class="subtitle">두 명의 플레이어가 턴을 번갈아가며 40턴 동안 전투를 진행합니다.</div>
+                <div class="main-content">
+                    <div class="gif-box" id="one"></div>
+                    <div class="text-box">
+                        <ul>
+                            <li>게임 시작 시 랜덤으로 선공 플레이어가 결정됩니다.</li>
+                            <li>각 플레이어는 체력 100으로 시작하며 0이 되면 즉시 패배합니다.</li>
+                            <li>20턴이 끝났을 때 체력이 더 높은 플레이어가 승리합니다.</li>
+                            <li>매 턴마다 세 가지 중 하나의 행동을 선택할 수 있습니다. <br>공격 / 방어 / 증강</li>
+                            <br>
+                            <li>공격 : 상대 플레이어에게 10의 데미지를 입힙니다.</li>
+                            <li>방어 : 방어 태세를 갖추며 상대방의 기본 공격의 데미지를 <br>5로 줄여줍니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="augments-tab" class="hidden">
+                <div class="title">증강</div>
+                <div class="subtitle">턴에 따라 다양한 증강을 선택하고 전투에 활용하세요.</div>
+                <div class="main-content">
+                    <div class="gif-box" id="two"></div>
+                    <div class="text-box">
+                        <ul>
+                            <li>증강은 일반 증강과 황금 증강으로 나뉩니다.</li>
+                            <br>
+                            <li>일반 증강은 체력 회복, 공격력 증가, 방어 강화 등 다양한 효과를 제공합니다.</li>
+                            <li>선택한 증강은 즉시 또는 지속적으로 효과를 발휘합니다.</li>
+                            <li>황금 증강은 랜덤한 시간에 등장하며 일반 증강보다 강력하고<br>특별한 효과를 제공합니다. <br>(황금 증강 턴에 증강을 사용하지 않을시 사라집니다.)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tab) {
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(t => t.classList.remove('active'));
+
+            const ruleTab = document.getElementById('rules-tab');
+            const augTab = document.getElementById('augments-tab');
+
+            if (tab === 'rules') {
+                tabs[0].classList.add('active');
+                ruleTab.classList.remove('hidden');
+                augTab.classList.add('hidden');
+            } else {
+                tabs[1].classList.add('active');
+                ruleTab.classList.add('hidden');
+                augTab.classList.remove('hidden');
+            }
+        }
+    </script>
+</body>
+
+</html>

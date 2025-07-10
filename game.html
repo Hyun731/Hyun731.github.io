@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVERDRIVE</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+    <div id="playground">
+        <div class="turn-display" id="turn-display">1 / 40</div>
+        <div id="game-screen">
+            <div class="player-panel" id="panel1">
+                <div class="player-name" id="name1">플레이어 1</div>
+                <div class="player-hp" id="hp1">HP: 200</div>
+                <button class="btn" id="btn1-attack" onclick="action('attack', 1)">공격</button>
+                <button class="btn" id="btn1-defend" onclick="action('defend', 1)">방어</button>
+                <button class="btn" id="btn1-augment" onclick="action('augment', 1)">증강</button>
+            </div>
+            <div
+                style="padding: 30px; background-color: #F6F6F6; width: 600px; height: 700px; display: flex; justify-content: center; border-radius: 12px;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);">
+                <div class="log-box" id="log"></div>
+            </div>
+            <div class="player-panel" id="panel2">
+                <div class="player-name" id="name2">플레이어 2</div>
+                <div class="player-hp" id="hp2">HP: 200</div>
+                <button class="btn" id="btn2-attack" onclick="action('attack', 2)">공격</button>
+                <button class="btn" id="btn2-defend" onclick="action('defend', 2)">방어</button>
+                <button class="btn" id="btn2-augment" onclick="action('augment', 2)">증강</button>
+            </div>
+        </div>
+        <div id="augment-overlay" class="back" style="display:none; position: fixed; top: 0; left: 0; z-index: 999;">
+            <div class="card-region">
+                <div class="card">
+                    <div class="augment-card-content">
+                        <div class="augment-type">증강 속성</div>
+                        <div class="augment-name">증강 이름</div>
+                        <div class="augment-desc">증강 설명</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="augment-card-content">
+                        <div class="augment-type">증강 속성</div>
+                        <div class="augment-name">증강 이름</div>
+                        <div class="augment-desc">증강 설명</div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="augment-card-content">
+                        <div class="augment-type">증강 속성</div>
+                        <div class="augment-name">증강 이름</div>
+                        <div class="augment-desc">증강 설명</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="golden-popup">황금 증강 턴입니다!</div>
+    </div>
+    <div id="victory-screen" class="overlay" style="display:none">
+        <div id="victory-message">🏆 승리!</div>
+        <div id="victory-button">
+            <button onclick="location.href='index.html'" class="endBtn">메인 화면</button>
+            <button onclick="onLogbox()" class="endBtn">로그 보기</button>
+        </div>
+    </div>
+    <div id="logBack">
+        <button onclick="location.href='index.html'" class="endBtn">메인 화면</button>
+    </div>
+    <script src="game.js"></script>
+</body>
+
+</html>

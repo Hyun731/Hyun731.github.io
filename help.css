@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #d6ecff;
+}
+
+.wrapper {
+    margin: 40px auto;
+    width: 100%;
+    max-width: 1400px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 180px;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.tab {
+    width: 120px;
+    padding: 15px 10px;
+    margin: 10px 0;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: white;
+    color: #3366ff;
+    transition: 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.tab:hover{
+    background-color: #3366ff;
+    color: white;
+}
+
+.tab.active {
+    background-color: #3366ff;
+    color: white;
+}
+
+.content {
+    flex: 1;
+    padding: 50px;
+    height: 600px;
+    flex-direction: column;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.main-content {
+    display: flex;
+    gap: 50px;
+}
+#one {
+        background-image: url("/2025-07-06/gif/1.gif");
+}#two {
+        background-image: url("/2025-07-06/gif/2.gif");
+}
+
+.gif-box {
+    width: 700px;
+    height: 350px;
+    display: flex;
+    background-size : 100% 100%;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.text-box ul {
+    font-size: 16px;
+    line-height: 1.8;
+    padding-left: 20px;
+}
+
+.hidden {
+    display: none;
+}

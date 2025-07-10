@@ -1,0 +1,461 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
+}
+
+body {
+    background-color: #E6F2FF;
+    color: #E8ECF0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.turn-display {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 20px;
+    color: black;
+}
+
+#game-screen {
+    display: flex;
+    width: 1200px;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.player-panel {
+    width: 250px;
+    background: #F6F6F6;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+    height: 700px;
+}
+
+.player-name {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000;
+}
+
+.player-hp {
+    font-size: 20px;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.btn {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    font-size: 30px;
+    font-weight: 900;
+    border: none;
+    border-radius: 8px;
+    background: #446DFF;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s, transform 0.2s;
+}
+
+.btn:hover {
+    background: #3B4978;
+    transform: scale(1.05);
+}
+
+.btn:disabled {
+    background: #7D7D7D80;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.log-box {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    color: #000;
+    padding: 20px;
+    overflow-y: auto;
+    font-size: 16px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.2);
+    line-height: 1.5;
+}
+
+.damage {
+    animation: blink 0.5s ease 3;
+    color: #FF4D4D;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes punch-right {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes punch-left {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    75% {
+        transform: translateX(-6px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.punch-right {
+    animation: punch-right 0.3s ease;
+}
+
+.punch-left {
+    animation: punch-left 0.3s ease;
+}
+
+.shake {
+    animation: shake 0.4s ease;
+}
+
+.hit-effect {
+    position: absolute;
+    font-size: 40px;
+    animation: hit-pop 0.5s ease forwards;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+@keyframes hit-pop {
+    0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(5) translate(-50%, -50%);
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    color: #fff;
+    font-size: 36px;
+    text-align: center;
+}
+
+button.endBtn  {
+    padding: 16px;
+    font-size: 20px;
+    margin: 15px;
+    border: none;
+    border-radius: 10px;
+    background-color: #446DFF;
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+button.endBtn:hover {
+    background: #3B4978;
+    transform: scale(1.05);
+}
+.card {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    width: 400px;
+    height: 600px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: all 0.3s ease;
+    color: #333333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+.augment-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+    width: 90%;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+.augment-type {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.augment-name {
+    font-size: 36px;
+    font-weight: 900;
+    margin: 0;
+    margin-bottom: 100px;
+    margin-top: 100px;
+    color: #000;
+}
+
+.augment-desc {
+    font-size: 18px;
+    color: #888;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+    cursor: pointer;
+}
+
+.card-region {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    transition: all 0.5s ease;
+}
+
+.back {
+    background-color: #00000025;
+    height: 100vh;
+    width: 100vw;
+    padding: 50px;
+    transition: opacity 1s ease;
+}
+
+.card.selected {
+    transform: translate(0%, 0%) scale(1.2) rotateY(360deg);
+    transition: transform 2s ease;
+    z-index: 10;
+    position: relative;
+}
+
+.card.fade-out {
+    opacity: 0;
+    transform: translateY(100px);
+    transition: all 1s ease;
+    pointer-events: none;
+
+}
+
+.back.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.log-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.log-fail {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.log-action {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.log-status {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+.log-augment {
+    background-color: #cce5ff;
+    color: #004085;
+    border: 1px solid #b8daff;
+}
+
+.log-golden {
+    background-color: #fff8e1;
+    color: #ffb300;
+    border: 1px solid #ffe082;
+}
+
+#log div {
+    margin-bottom: 4px;
+    transition: all 0.3s ease;
+}
+
+@keyframes logFadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.log-entry {
+    animation: logFadeInUp 0.4s ease forwards;
+}
+
+.card.strong {
+    background: linear-gradient(135deg, #f6d365, #fda085);
+    border: 3px solid #ffe079;
+    box-shadow: 0 0 15px 4px rgba(255, 200, 0, 0.8);
+    color: #2e1d00;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.card.strong .augment-type {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffee58;
+    text-shadow: 0 0 3px #000, 0 0 8px #ffee58;
+}
+
+.card.strong .augment-name {
+    font-size: 36px;
+    font-weight: 900;
+    margin: 100px 0;
+    color: #ffffff;
+    text-shadow:
+        0 0 4px #ff9800,
+        0 0 8px #f44336,
+        1px 1px 2px #000;
+}
+
+.card.strong .augment-desc {
+    font-size: 18px;
+    color: #fff8e1;
+    text-shadow: 0 0 4px #000, 0 0 6px #ffb74d;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+#golden-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(45deg, gold, darkorange);
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 20px 40px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px gold;
+    z-index: 1000;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+#playground{
+    text-align: center;
+}
+#victory-screen {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+#victory-message {
+    opacity: 0;
+    transition: opacity 1s ease;
+    font-weight: bold;
+}
+
+#victory-button {
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+#logBack{
+    display: none;
+}

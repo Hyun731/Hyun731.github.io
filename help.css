@@ -74,9 +74,9 @@ body {
     gap: 50px;
 }
 #one {
-        background-image: url("/gif/1.gif");
+        background-image: url("gif/1.gif");
 }#two {
-        background-image: url("/gif/2.gif");
+        background-image: url("gif/2.gif");
 }
 
 .gif-box {

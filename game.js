@@ -285,7 +285,11 @@ function action(type, actor) {
                 }
             });;
             dealDamage(actor, target, base);
-
+            const hitSound = document.getElementById("hit-sound");
+            if (hitSound) {
+                hitSound.currentTime = 0;
+                hitSound.play().catch(e => console.warn("Hit sound error:", e));
+            }
             const effect = document.createElement('div');
             effect.className = 'hit-effect';
             effect.textContent = '💥';
